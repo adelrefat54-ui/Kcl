@@ -1,40 +1,10 @@
-const foods={
-"أرز أبيض مطبوخ":{cal:130,p:2.7,c:28,f:.3},"مكرونة مطبوخة":{cal:158,p:5.8,c:30.9,f:.9},
-"صدور فراخ مشوية":{cal:165,p:31,c:0,f:3.6},"لحمة بقري مطبوخة":{cal:250,p:26,c:0,f:16},
-"بيض كامل":{cal:143,p:12.6,c:.7,f:9.5},"فول مدمس":{cal:110,p:7.6,c:19.7,f:.4},
-"عيش بلدي":{cal:270,p:9,c:55,f:2.5},"بطاطس مسلوقة":{cal:87,p:1.9,c:20.1,f:.1},
-"تونة مصفاة":{cal:132,p:28.7,c:0,f:1},"لبن كامل":{cal:61,p:3.2,c:4.8,f:3.3},
-"زبادي":{cal:61,p:3.5,c:4.7,f:3.3},"موز":{cal:89,p:1.1,c:22.8,f:.3},
-"تفاح":{cal:52,p:.3,c:13.8,f:.2},"شوفان":{cal:389,p:16.9,c:66.3,f:6.9},
-"زبدة فول سوداني":{cal:588,p:25,c:20,f:50},"جبنة قريش":{cal:98,p:11.1,c:3.4,f:4.3}
-};
-let day=JSON.parse(localStorage.getItem("kcl_day")||"[]");
-let targets=JSON.parse(localStorage.getItem("kcl_targets")||"null");
+const foods=[{"name": "أرز أبيض مطبوخ", "en": "rice", "cal": 130, "p": 2.7, "c": 28, "f": 0.3}, {"name": "مكرونة مطبوخة", "en": "pasta", "cal": 158, "p": 5.8, "c": 30.9, "f": 0.9}, {"name": "صدور فراخ مشوية", "en": "chicken breast", "cal": 165, "p": 31, "c": 0, "f": 3.6}, {"name": "لحمة بقري مطبوخة", "en": "beef", "cal": 250, "p": 26, "c": 0, "f": 16}, {"name": "سمك بلطي مشوي", "en": "tilapia", "cal": 128, "p": 26, "c": 0, "f": 2.7}, {"name": "تونة مصفاة", "en": "tuna", "cal": 132, "p": 28.7, "c": 0, "f": 1}, {"name": "بيض كامل", "en": "egg", "cal": 143, "p": 12.6, "c": 0.7, "f": 9.5}, {"name": "بياض البيض", "en": "egg white", "cal": 52, "p": 10.9, "c": 0.7, "f": 0.2}, {"name": "فول مدمس", "en": "fava beans", "cal": 110, "p": 7.6, "c": 19.7, "f": 0.4}, {"name": "حمص مطبوخ", "en": "chickpeas", "cal": 164, "p": 8.9, "c": 27.4, "f": 2.6}, {"name": "عدس مطبوخ", "en": "lentils", "cal": 116, "p": 9, "c": 20.1, "f": 0.4}, {"name": "عيش بلدي", "en": "baladi bread", "cal": 270, "p": 9, "c": 55, "f": 2.5}, {"name": "شوفان", "en": "oats", "cal": 389, "p": 16.9, "c": 66.3, "f": 6.9}, {"name": "بطاطس مسلوقة", "en": "potato", "cal": 87, "p": 1.9, "c": 20.1, "f": 0.1}, {"name": "بطاطا حلوة", "en": "sweet potato", "cal": 86, "p": 1.6, "c": 20.1, "f": 0.1}, {"name": "موز", "en": "banana", "cal": 89, "p": 1.1, "c": 22.8, "f": 0.3}, {"name": "تفاح", "en": "apple", "cal": 52, "p": 0.3, "c": 13.8, "f": 0.2}, {"name": "برتقال", "en": "orange", "cal": 47, "p": 0.9, "c": 11.8, "f": 0.1}, {"name": "فراولة", "en": "strawberry", "cal": 32, "p": 0.7, "c": 7.7, "f": 0.3}, {"name": "أفوكادو", "en": "avocado", "cal": 160, "p": 2, "c": 8.5, "f": 14.7}, {"name": "لبن كامل", "en": "whole milk", "cal": 61, "p": 3.2, "c": 4.8, "f": 3.3}, {"name": "زبادي", "en": "yogurt", "cal": 61, "p": 3.5, "c": 4.7, "f": 3.3}, {"name": "جبنة قريش", "en": "cottage cheese", "cal": 98, "p": 11.1, "c": 3.4, "f": 4.3}, {"name": "جبنة فيتا", "en": "feta", "cal": 265, "p": 14.2, "c": 3.9, "f": 21.5}, {"name": "زبدة فول سوداني", "en": "peanut butter", "cal": 588, "p": 25, "c": 20, "f": 50}, {"name": "لوز", "en": "almonds", "cal": 579, "p": 21.2, "c": 21.6, "f": 49.9}, {"name": "جوز", "en": "walnuts", "cal": 654, "p": 15.2, "c": 13.7, "f": 65.2}, {"name": "زيت زيتون", "en": "olive oil", "cal": 884, "p": 0, "c": 0, "f": 100}, {"name": "عسل", "en": "honey", "cal": 304, "p": 0.3, "c": 82.4, "f": 0}, {"name": "سكر", "en": "sugar", "cal": 387, "p": 0, "c": 100, "f": 0}, {"name": "شوكولاتة داكنة", "en": "dark chocolate", "cal": 598, "p": 7.8, "c": 45.9, "f": 42.6}, {"name": "كرواسون", "en": "croissant", "cal": 406, "p": 8.2, "c": 45.8, "f": 21}, {"name": "بيتزا جبنة", "en": "pizza cheese", "cal": 266, "p": 11, "c": 33, "f": 10}, {"name": "برجر لحم", "en": "beef burger", "cal": 295, "p": 17, "c": 24, "f": 16}, {"name": "بطاطس مقلية", "en": "french fries", "cal": 312, "p": 3.4, "c": 41, "f": 15}, {"name": "ذرة مطبوخة", "en": "corn", "cal": 96, "p": 3.4, "c": 21, "f": 1.5}, {"name": "بروكلي", "en": "broccoli", "cal": 35, "p": 2.4, "c": 7.2, "f": 0.4}, {"name": "خيار", "en": "cucumber", "cal": 15, "p": 0.7, "c": 3.6, "f": 0.1}, {"name": "طماطم", "en": "tomato", "cal": 18, "p": 0.9, "c": 3.9, "f": 0.2}, {"name": "جزر", "en": "carrot", "cal": 41, "p": 0.9, "c": 9.6, "f": 0.2}, {"name": "سبانخ", "en": "spinach", "cal": 23, "p": 2.9, "c": 3.6, "f": 0.4}, {"name": "مانجو", "en": "mango", "cal": 60, "p": 0.8, "c": 15, "f": 0.4}, {"name": "عنب", "en": "grapes", "cal": 69, "p": 0.7, "c": 18.1, "f": 0.2}, {"name": "زبيب", "en": "raisins", "cal": 299, "p": 3.1, "c": 79.2, "f": 0.5}];
+let day=JSON.parse(localStorage.getItem("kcl_day")||"[]"),targets=JSON.parse(localStorage.getItem("kcl_targets")||"null"),selected=null;
 const $=id=>document.getElementById(id);
-Object.keys(foods).forEach(n=>{let o=document.createElement("option");o.textContent=n;o.value=n;$("food").appendChild(o)});
-function calc(){
- const w=+$("weight").value,h=+$("height").value,a=+$("age").value,sex=$("sex").value,act=+$("activity").value,g=$("goal").value;
- let bmr=10*w+6.25*h-5*a+(sex==="male"?5:-161), t=bmr*act;
- if(g==="bulk")t*=1.12;if(g==="cut")t*=.82;
- let p=Math.round(w*(g==="bulk"?2.2:2)), f=Math.round(w*.9), c=Math.max(0,Math.round((t-p*4-f*9)/4));
- targets={cal:Math.round(t),p,c,f};localStorage.setItem("kcl_targets",JSON.stringify(targets));
- $("target").textContent=`هدفك اليومي: ${targets.cal} سعرة — ${targets.p} بروتين — ${targets.c} كارب — ${targets.f} دهون`;
- render();
-}
-function add(){
- const f=foods[$("food").value], g=+$("grams").value;
- if(!g)return;
- day.push({meal:$("meal").value,food:$("food").value,grams:g,cal:f.cal*g/100,p:f.p*g/100,c:f.c*g/100,f:f.f*g/100});
- localStorage.setItem("kcl_day",JSON.stringify(day));render();
-}
-function render(){
- let t=day.reduce((x,y)=>({cal:x.cal+y.cal,p:x.p+y.p,c:x.c+y.c,f:x.f+y.f}),{cal:0,p:0,c:0,f:0});
- $("calories").textContent=Math.round(t.cal);$("protein").textContent=Math.round(t.p);$("carbs").textContent=Math.round(t.c);$("fat").textContent=Math.round(t.f);
- $("list").innerHTML=day.length?day.map((x,i)=>`<div class="item"><div><b>${x.food}</b><br><small>${x.meal} — ${x.grams} جم — ${Math.round(x.cal)} سعرة | P ${Math.round(x.p)} | C ${Math.round(x.c)} | F ${Math.round(x.f)}</small></div><button class="del" onclick="removeItem(${i})">حذف</button></div>`).join(""):"<div class='target'>لسه مفيش أكل مضاف النهارده.</div>";
- if(targets && $("target").textContent.includes("اضغط")) $("target").textContent=`هدفك اليومي: ${targets.cal} سعرة — ${targets.p} بروتين — ${targets.c} كارب — ${targets.f} دهون`;
-}
+function calc(){const w=+$("weight").value,h=+$("height").value,a=+$("age").value,sex=$("sex").value,act=+$("activity").value,g=$("goal").value;let bmr=10*w+6.25*h-5*a+(sex==="male"?5:-161),t=bmr*act;if(g==="bulk")t*=1.12;if(g==="cut")t*=.82;let p=Math.round(w*(g==="bulk"?2.2:2)),f=Math.round(w*.9),c=Math.max(0,Math.round((t-p*4-f*9)/4));targets={cal:Math.round(t),p,c,f};localStorage.setItem("kcl_targets",JSON.stringify(targets));$("target").textContent=`هدفك اليومي: ${targets.cal} سعرة — ${targets.p} بروتين — ${targets.c} كارب — ${targets.f} دهون`;render()}
+function search(){let q=$("search").value.trim().toLowerCase(),arr=foods.filter(x=>!q||x.name.toLowerCase().includes(q)||x.en.includes(q)).slice(0,12);$("results").innerHTML=arr.map(x=>`<button class="foodBtn" onclick="selectFood(${foods.indexOf(x)})"><b>${x.name}</b><small>${x.en} — ${x.cal} kcal | P ${x.p}g | C ${x.c}g | F ${x.f}g لكل 100 جم</small></button>`).join("")||"<div class='target'>مش لاقي الأكل. جرّب اسم بالإنجليزي أو بالعربي.</div>"}
+function selectFood(i){selected=foods[i];$("selectedBox").classList.remove("hidden");$("selectedBox").innerHTML=`<b>تم اختيار: ${selected.name}</b><br><small>${selected.cal} سعرة / 100 جم — بروتين ${selected.p} جم — كارب ${selected.c} جم — دهون ${selected.f} جم</small>`}
+function add(){if(!selected){alert("اختار أكلة الأول");return}let g=+$("grams").value;if(!g)return;day.push({meal:$("meal").value,food:selected.name,grams:g,cal:selected.cal*g/100,p:selected.p*g/100,c:selected.c*g/100,f:selected.f*g/100});localStorage.setItem("kcl_day",JSON.stringify(day));render()}
 function removeItem(i){day.splice(i,1);localStorage.setItem("kcl_day",JSON.stringify(day));render()}
-$("calcBtn").onclick=calc;$("addBtn").onclick=add;
-$("resetBtn").onclick=()=>{if(confirm("تصفّر أكل اليوم؟")){day=[];localStorage.removeItem("kcl_day");render()}};
-if(targets)$("target").textContent=`هدفك اليومي: ${targets.cal} سعرة — ${targets.p} بروتين — ${targets.c} كارب — ${targets.f} دهون`;
-render();
+function render(){let t=day.reduce((x,y)=>({cal:x.cal+y.cal,p:x.p+y.p,c:x.c+y.c,f:x.f+y.f}),{cal:0,p:0,c:0,f:0});$("calories").textContent=Math.round(t.cal);$("protein").textContent=Math.round(t.p);$("carbs").textContent=Math.round(t.c);$("fat").textContent=Math.round(t.f);$("list").innerHTML=day.length?day.map((x,i)=>`<div class="item"><div><b>${x.food}</b><br><small>${x.meal} — ${x.grams} جم — ${Math.round(x.cal)} سعرة | P ${Math.round(x.p)} | C ${Math.round(x.c)} | F ${Math.round(x.f)}</small></div><button class="del" onclick="removeItem(${i})">حذف</button></div>`).join(""):"<div class='target'>لسه مفيش أكل مضاف النهارده.</div>"}
+$("search").addEventListener("input",search);$("calcBtn").onclick=calc;$("addBtn").onclick=add;$("resetBtn").onclick=()=>{if(confirm("تصفّر أكل اليوم؟")){day=[];localStorage.removeItem("kcl_day");render()}};search();render();if(targets)$("target").textContent=`هدفك اليومي: ${targets.cal} سعرة — ${targets.p} بروتين — ${targets.c} كارب — ${targets.f} دهون`;
