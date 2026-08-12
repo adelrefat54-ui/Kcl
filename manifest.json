@@ -1,1 +1,10 @@
-{"name":"KCL","short_name":"KCL","start_url":"./index.html","display":"standalone","background_color":"#f3f4f6","theme_color":"#111827","lang":"ar","dir":"rtl"}
+{
+  "name": "365 — رحلتك",
+  "short_name": "365",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#eef2f7",
+  "theme_color": "#101827",
+  "lang": "ar",
+  "dir": "rtl"
+}

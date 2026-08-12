@@ -1,16 +1,14 @@
 <!doctype html><html lang="ar" dir="rtl"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#111827"><title>KCL</title><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css"></head>
-<body><header><div><div class="brand">KCL</div><div class="sub">حاسبة السعرات والتغذية</div></div><button id="resetBtn" class="ghost">تصفير اليوم</button></header><main>
-<section class="card"><h2>بياناتك وهدفك</h2><div class="grid">
-<label>الوزن (كجم)<input id="weight" type="number" value="67"></label><label>الطول (سم)<input id="height" type="number" value="169"></label><label>السن<input id="age" type="number" value="26"></label>
-<label>النوع<select id="sex"><option value="male">ذكر</option><option value="female">أنثى</option></select></label>
-<label>النشاط<select id="activity"><option value="1.2">قليل</option><option value="1.375">خفيف</option><option value="1.55" selected>متوسط</option><option value="1.725">عالي</option><option value="1.9">عالي جدًا</option></select></label>
-<label>الهدف<select id="goal"><option value="bulk">تضخيم</option><option value="maintain">تثبيت</option><option value="cut">تخسيس</option></select></label></div>
-<button id="calcBtn" class="primary">احسب احتياجي</button><div id="target" class="target">اضغط «احسب احتياجي»</div></section>
-<section class="stats"><div class="stat"><b id="calories">0</b><span>سعرة</span></div><div class="stat"><b id="protein">0</b><span>بروتين جم</span></div><div class="stat"><b id="carbs">0</b><span>كارب جم</span></div><div class="stat"><b id="fat">0</b><span>دهون جم</span></div></section>
-<section class="card"><h2>🔎 ابحث عن الأكل</h2><input id="search" class="search" placeholder="اكتب اسم الأكل... مثال: chicken, rice, banana, رز">
-<div id="results" class="results"></div><div id="selectedBox" class="selected hidden"></div><div class="grid">
-<label>الوجبة<select id="meal"><option>فطار</option><option>غدا</option><option>عشا</option><option>سناك</option></select></label>
-<label>الكمية (جم)<input id="grams" type="number" value="100" min="1"></label></div><button id="addBtn" class="primary">+ إضافة الأكل</button></section>
-<section class="card"><h2>🍽️ أكل اليوم</h2><div id="list" class="list"></div></section></main><script src="app.js"></script></body></html>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101827"><meta name="apple-mobile-web-app-capable" content="yes">
+<title>365 — رحلتك</title><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><div class="logo">365</div><div><b>رحلتك تبدأ النهارده</b><small>تحدي صغير كل يوم</small></div><div class="streak">🔥 <span id="streak">0</span></div></header>
+<main>
+<section class="hero"><div class="sky">✦</div><div class="day">اليوم <b id="dayNo">1</b> من 365</div><h1 id="title">ابدأ بحاجة صغيرة.</h1><p id="desc">إنجاز بسيط النهارده ممكن يغيّر سنة كاملة.</p><button id="done" class="done">أنجزت التحدي ✓</button></section>
+<section class="stats"><div><b id="completed">0</b><span>منجز</span></div><div><b id="percent">0%</b><span>من الرحلة</span></div><div><b id="left">365</b><span>متبقي</span></div></section>
+<section class="map"><div class="maphead"><h2>🗺️ خريطة السنة</h2><span id="monthName"></span></div><div id="days" class="days"></div></section>
+<section class="card"><h2>🎯 أنواع التحديات</h2><div class="chips"><span>🧠 تعلم</span><span>💪 صحة</span><span>💰 فلوس</span><span>❤️ علاقات</span><span>🌱 أثر</span><span>✨ تطوير</span></div></section>
+</main>
+<nav><button class="active">🏠<small>الرئيسية</small></button><button onclick="scrollToMap()">🗺️<small>الخريطة</small></button><button onclick="resetAll()">↻<small>إعادة</small></button></nav>
+<script src="app.js"></script></body></html>
